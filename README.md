@@ -1,7 +1,8 @@
 psSeaTracker
 ============
 
-free oxid module to save google adwords click id (gclid) by user
+Stores google adwords click id (gclid) by shop user.
+Free Module for OXID eShop.
 
 
 Features
@@ -41,6 +42,7 @@ License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
     
 
-Take if you need and feel free to send a pull request. ;-)
+Copyright
 
-(c) Proud Sourcing GmbH 2013
+	Proud Sourcing GmbH 2013
+	www.proudcommerce.com
