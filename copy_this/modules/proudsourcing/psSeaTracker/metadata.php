@@ -15,12 +15,13 @@ $aModule = array(
         'en' => 'Saves google adwords click id (gclid) to user (if logged in).',
     ),
     'thumbnail'    => '',
-    'version'      => '1.0.0',
+    'version'      => '1.0.1',
     'author'       => 'Proud Sourcing GmbH',
     'url'          => 'http://www.proudcommerce.com',
     'email'        => 'support@proudcommerce.com',
     'extend'       => array(
-        'oxcmp_user'    =>      'proudsourcing/psSeaTracker/application/components/psseatracker_oxcmp_user'
+        'oxcmp_user'    =>      'proudsourcing/psSeaTracker/application/components/psseatracker_oxcmp_user',
+        'payment'       =>      'proudsourcing/psSeaTracker/application/controllers/psseatracker_payment'
     ),
     'files' => array(
     ),

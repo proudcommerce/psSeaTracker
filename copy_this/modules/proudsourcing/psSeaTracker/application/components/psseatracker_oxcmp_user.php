@@ -8,7 +8,7 @@
  * @copyright (c) Proud Sourcing GmbH | 2013
  * @link www.proudcommerce.com
  * @package psSeaTracker
- * @version 1.0.0
+ * @version 1.0.1
 **/
 class psseatracker_oxcmp_user extends psseatracker_oxcmp_user_parent
 {
@@ -28,40 +28,35 @@ class psseatracker_oxcmp_user extends psseatracker_oxcmp_user_parent
         // get and save click id
         if($sClickId = oxConfig::getParameter("gclid"))
         {
-            oxSession::setVar("psSeaTracker", $sClickId);
+            oxSession::setVar("psSeaTracker_id", $sClickId);
         }
         return $mReturn;
     }
-    
-    /**
-     * Special functionality which is performed after user logs in (or user is created without pass).
-     * Performes additional checking if user is not BLOCKED (oxuser::InGroup("oxidblocked")) - if
-     * yes - redirects to blocked user page ("cl=content&tpl=user_blocked.tpl"). If user status
-     * is OK - sets user ID to session, automatically assigns him to dynamic
-     * group (oxuser::addDynGroup(); if this directive is set (usually
-     * by URL)). Stores cookie info if user confirmed in login screen.
-     * Then loads delivery info and forces basket to recalculate
-     * (oxsession::getBasket() + oBasket::blCalcNeeded = true). Returns
-     * "payment" to redirect to payment screen. If problems occured loading
-     * user - sets error code according problem, and returns "user" to redirect
-     * to user info screen.
-     *
-     * @param oxuser $oUser user object
-     *
-     * @return string
-     */
-    protected function _afterLogin( $oUser )
-    {
-        $mReturn = parent::_afterLogin( $oUser );
-        // psSeaTracker
-        // add google adwords click id to oxuser (if not exists)
-        if(empty($oUser->oxuser__psseatracker_gclid->value) && $sClickId = oxSession::getVar("psSeaTracker"))
-        {
-            oxSession::deleteVar("psSeaTracker");
-            $sSQL = 'UPDATE oxuser SET PSSEATRACKER_GCLID = '.oxDb::getDb()->quote( $sClickId ).', PSSEATRACKER_DATE = NOW() WHERE oxid = ' . oxDb::getDb()->quote( $oUser->getId() );
-            oxDb::getDb()->execute( $sSQL );
-        }
 
-        return $mReturn;
-    }  
+    /**
+     * First test if all MUST FILL fields were filled, then performed
+     * additional checking oxcmp_user::CheckValues(). If no errors
+     * occured - trying to create new user (oxuser::CreateUser()),
+     * logging him to shop (oxuser::Login() if user has entered password)
+     * or assigning him to dynamic group (oxuser::addDynGroup()).
+     * If oxuser::CreateUser() returns false - thsi means user is
+     * allready created - we only logging him to shop (oxcmp_user::Login()).
+     * If there is any error with missing data - function will return
+     * false and set error code (oxcmp_user::iError). If user was
+     * created successfully - will return "payment" to redirect to
+     * payment interface.
+     *
+     * Template variables:
+     * <b>usr_err</b>
+     *
+     * Session variables:
+     * <b>usr_err</b>, <b>usr</b>
+     *
+     * @return  mixed    redirection string or true if successful, false otherwise
+     */
+    public function createUser()
+    {
+        oxSession::setVar("psSeaTracker_status", "register");
+        return parent::createUser();
+    }
 }
