@@ -2,7 +2,7 @@ psSeaTracker
 ============
 
 Stores google adwords click id (gclid) by shop user.
-Free Module for OXID eShop 4.6/4.7/4.8.
+Free Module for OXID eShop 4.6/4.7/4.8/4.9/4.10.
 
 
 Features
@@ -44,5 +44,5 @@ License
 
 Copyright
 
-	Proud Sourcing GmbH 2013
+	Proud Sourcing GmbH 2016
 	www.proudcommerce.com
