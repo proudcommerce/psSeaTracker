@@ -45,4 +45,4 @@ License
 Copyright
 
 	Proud Sourcing GmbH 2016
-	www.proudcommerce.com
+	www.proudcommerce.com / www.proudsourcing.de

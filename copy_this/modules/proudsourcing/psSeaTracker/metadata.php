@@ -14,7 +14,7 @@ $aModule = array(
         'de' => 'Speichert die Google Adwords Click-ID (gclid) beim Kunden (falls dieser eingeloggt ist).',
         'en' => 'Saves google adwords click id (gclid) to user (if logged in).',
     ),
-    'thumbnail'    => '',
+    'thumbnail'    => 'logo_pc-os.jpg',
     'version'      => '1.0.1',
     'author'       => 'Proud Sourcing GmbH',
     'url'          => 'http://www.proudcommerce.com',
