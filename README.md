@@ -1,31 +1,32 @@
 psSeaTracker
 ============
 
-Stores google adwords click id (gclid) by shop user.
-Free Module for OXID eShop 4.6/4.7/4.8/4.9/4.10.
+Stores google adwords click id (or any other tracking id/param) by shop user.
+Free module for OXID eshop 4.7, 4.8, 4.9 and 4.10.
 
 
 Features
 
 	- saves gclid into session if google adwords clickid is used (see also http://support.google.com/analytics/answer/2938246?hl=en)
-	- saves glcid and date to userobject when user is logging in / registering user account
+	- saves glcid and date to userobject when user is logging in / registering user account (config: only new customers)
 	- shows glcid in shop admin (user information)
 
 
 Installation
 
 	1. copy content from copy_this folder into your shop root
-	2. copy content from changed_full folder into your shop root (and/or customize)
-	3. install sql (see below) and update views
-	4. activate module psSeaTracker in shop admin
-	5. delete tmp-folder
+	2. activate module psSeaTracker in shop admin
+
+Tip: Use the [OXID module connector](https://github.com/OXIDprojects/OXID-Module-Connector) to install this module.
 
 
-Install SQL
+Changelog
 
-	ALTER TABLE  `oxuser` ADD  `PSSEATRACKER_GCLID` VARCHAR( 150 ) NOT NULL, ADD  `PSSEATRACKER_DATE` DATETIME NOT NULL;
-
-
+	2017-10-10	2.0.0	Ready for OXID 4.10/5.2, make tracking-id/parameter configurable, add track only new customers feature
+	2013-11-29	1.0.1	Bugfix
+	2013-06-30	1.0.0	Module release (OXID 4.7/4.8)
+	
+	
 License
 
     This program is free software: you can redistribute it and/or modify
@@ -44,5 +45,5 @@ License
 
 Copyright
 
-	Proud Sourcing GmbH 2016
+	Proud Sourcing GmbH 2017
 	www.proudcommerce.com / www.proudsourcing.de

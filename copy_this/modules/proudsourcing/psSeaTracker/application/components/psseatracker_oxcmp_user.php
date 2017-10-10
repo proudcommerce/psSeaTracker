@@ -5,10 +5,10 @@
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
- * @copyright (c) Proud Sourcing GmbH | 2013
+ * @copyright (c) Proud Sourcing GmbH | 2017
  * @link www.proudcommerce.com
  * @package psSeaTracker
- * @version 1.0.1
+ * @version 2.0.0
 **/
 class psseatracker_oxcmp_user extends psseatracker_oxcmp_user_parent
 {
@@ -25,10 +25,9 @@ class psseatracker_oxcmp_user extends psseatracker_oxcmp_user_parent
     {
         $mReturn = parent::render();
         // psSeaTracker
-        // get and save click id
-        if($sClickId = oxConfig::getParameter("gclid"))
-        {
-            oxSession::setVar("psSeaTracker_id", $sClickId);
+        $sParamId = oxRegistry::getConfig()->getShopConfVar('psseatracker_config_param', oxRegistry::getConfig()->getShopId(), 'module:psSeaTracker');
+        if($sClickId = oxRegistry::getConfig()->getRequestParameter($sParamId)) {
+            oxRegistry::getSession()->setVariable("psSeaTracker_id", $sClickId);
         }
         return $mReturn;
     }
@@ -56,7 +55,7 @@ class psseatracker_oxcmp_user extends psseatracker_oxcmp_user_parent
      */
     public function createUser()
     {
-        oxSession::setVar("psSeaTracker_status", "register");
+        oxRegistry::getSession()->setVariable("psSeaTracker_status", "register");
         return parent::createUser();
     }
 }
